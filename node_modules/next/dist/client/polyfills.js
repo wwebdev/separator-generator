@@ -1,0 +1,1 @@
+"use strict";require("__next_polyfill__fetch");require("url-polyfill");Object.assign=require('__next_polyfill__object_assign');
