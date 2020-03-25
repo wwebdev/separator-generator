@@ -1,4 +1,0 @@
-"use strict";exports.__esModule=true;exports.resolveRequest=resolveRequest;var _index=_interopRequireDefault(require("next/dist/compiled/resolve/index.js"));var _path=_interopRequireDefault(require("path"));function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function resolveRequest(req,issuer){// The `resolve` package is prebuilt through ncc, which prevents
-// PnP from being able to inject itself into it. To circumvent
-// this, we simply use PnP directly when available.
-if(process.versions.pnp){const{resolveRequest}=require(`pnpapi`);return resolveRequest(req,issuer,{considerBuiltins:false});}else{const basedir=issuer.endsWith(_path.default.posix.sep)||issuer.endsWith(_path.default.win32.sep)?issuer:_path.default.dirname(issuer);return _index.default.sync(req,{basedir});}}
