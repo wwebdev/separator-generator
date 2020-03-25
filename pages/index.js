@@ -1,22 +1,18 @@
 import Head from 'next/head'
 import styled from 'styled-components'
-
-const Headline = styled.h1`
-  color: red;
-`
+import { Generator } from '../components'
 
 const Home = () => (
   <div className="container">
     <Head>
-      <title>separator-generator</title>
+      <title>Separator Generator</title>
       <link rel="icon" href="/favicon.ico" />
+      <style>
+        {'body { margin: 0; font-family: sans-serif }'}
+      </style>
     </Head>
 
-    <main>
-      <Headline>
-        Welcome to your new project: separator-generator
-      </Headline>
-    </main>
+    <Generator />
   </div>
 )
 
