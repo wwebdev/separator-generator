@@ -13,23 +13,114 @@ const Section = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
 `
-export const Top = styled(Section)`
-  background: ${darkGrey};
-  color: #fff;
 
-  &:before {
+export const Top = styled(Section)`
+  color: #fff;
+  background: ${darkGrey};
+
+  &.elliptical {
+    border-bottom-left-radius: 50% 20%;
+    border-bottom-right-radius: 50% 20%;
+  }
+
+  &.triangles {
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      left: 0;
+      top: 100%;
+      z-index: 10;
+      display: block;
+      height: 90px;
+      background-size: 50px 100%;
+      background-image: linear-gradient(135deg, ${darkGrey} 25%, transparent 25%), linear-gradient(225deg, ${darkGrey} 25%, transparent 25%);
+      background-position: 50%;
+    }
+  }
+
+  &.triangle::before {
     content: '';
     position: absolute;
+    bottom: -50px;
+    z-index: 10;
+    background: inherit;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    transform: translateX(-50%) rotate(45deg);
+  }
+
+  &.triangle.reverse::before {
     bottom: 0;
-    width: 100%;
+    transform: translateX(-50%) translateY(50%) rotate(45deg);
     background: #fff;
-    height: 20%; /* TODO calculate */
-    transform: skewY(6deg); /* TODO calculate */
-    transform-origin: top left; /* or top right (+ skewY = -) */
+  }
+
+  &.semiCircle::before {
+    position: absolute;
+    content: '';
+    left: 50%;
+    z-index: 10;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: inherit;
+    transform: translateX(-50%);
+    bottom: -50px;
+  }
+
+  &.semiCircle.reverse::before {
+    bottom: -50px;
+    background: #fff;
   }
 `
+
+export const SkewBg = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: ${darkGrey};
+  transform: skewY(6deg);
+  transform-origin: top right;
+  z-index: -1;
+`
+
+export const Wave = styled.div`
+  position: absolute;
+  height: 70px;
+  width: 100%;
+  background: ${darkGrey};
+  bottom: 0;
+
+  &::before, &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    border-radius: 100% 50%;
+  }
+
+  &::before {
+    width: 53.5%;
+    height: 80px;
+    background-color: #fff;
+    right: 0;
+    top: 40px;
+  }
+  &::after {
+    width: 53.5%;
+    height: 70px;
+    background-color: ${darkGrey};
+    left: -1px;
+    top: 27px;
+  }
+`
+
 export const Bottom = styled(Section)`
   color: ${darkGrey};
 `
