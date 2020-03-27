@@ -7,7 +7,7 @@ const Generator = props => {
     const [active, setActive] = useState('triangle')
     const [reversed, setReversed] = useState('false')
 
-    // /*  elliptical triangles semiCircle reverse */
+    // /*  todo reverse */
     return (
         <React.Fragment>
             <S.Header>
@@ -29,14 +29,14 @@ const Generator = props => {
                 </S.Center>
                 <S.Bottom>
                     <S.Row>
-                        <Card><img src="/skewed.png" alt="skewed" /></Card>
-                        <Card><img src="/semicircle.png" alt="semi circle" /></Card>
-                        <Card><img src="/wave.png" alt="wave" /></Card>
+                        <Card onClick={() => { setActive('skewed') }}><img src="/skewed.png" alt="skewed" /></Card>
+                        <Card onClick={() => { setActive('semiCircle') }}><img src="/semicircle.png" alt="semi circle" /></Card>
+                        <Card onClick={() => { setActive('wave') }}><img src="/wave.png" alt="wave" /></Card>
                     </S.Row>
                     <S.Row>
-                        <Card><img src="/triangles.png" alt="triangles" /></Card>
-                        <Card><img src="/triangle.png" alt="triangle" /></Card>
-                        <Card><img src="/curved.png" alt="curved" /></Card>
+                        <Card onClick={() => { setActive('spikes') }}><img src="/spikes.png" alt="spikes" /></Card>
+                        <Card onClick={() => { setActive('triangle') }}><img src="/triangle.png" alt="triangle" /></Card>
+                        <Card onClick={() => { setActive('curved') }}><img src="/curved.png" alt="curved" /></Card>
                     </S.Row>
                 </S.Bottom>
             </S.Container>

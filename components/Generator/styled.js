@@ -13,7 +13,6 @@ export const Header = styled.header`
   z-index: 10;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   width: 100%;
   padding: 10px 20px;
   box-sizing: border-box;
@@ -44,12 +43,12 @@ export const Top = styled(Section)`
   color: #fff;
   background: ${darkGrey};
 
-  &.elliptical {
+  &.curved {
     border-bottom-left-radius: 50% 20%;
     border-bottom-right-radius: 50% 20%;
   }
 
-  &.triangles {
+  &.spikes {
     &::after {
       content: '';
       position: absolute;
@@ -168,6 +167,11 @@ export const Row = styled.div`
 
   > * {
     margin: 20px;
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    }
   }
 
   img {
