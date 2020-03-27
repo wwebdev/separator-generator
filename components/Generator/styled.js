@@ -155,18 +155,15 @@ export const Bottom = styled(Section)`
   align-items: flex-end;
 `
 
-export const Center = styled.div`
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translateX(-50%) translateY(-50%);
-`
-
 export const Row = styled.div`
   display: flex;
 
   > * {
     margin: 20px;
+
+    @media (max-width: 768px) {
+      margin: 5px;
+    }
 
     &:hover {
       cursor: pointer;
@@ -177,4 +174,13 @@ export const Row = styled.div`
   img {
     width: 100%;
   }
+`
+
+export const Controls = styled(Card)`
+  position: relative;
+  z-index: 20;
+`
+
+export const ControlContent = styled.div`
+  padding: 10px;
 `

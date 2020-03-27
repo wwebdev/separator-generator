@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import { Card } from '@material-ui/core'
 import { GitHub } from '@material-ui/icons'
+import Controls from './Controls'
 import * as S from './styled'
 
 const Generator = props => {
     const [active, setActive] = useState('triangle')
     const [reversed, setReversed] = useState('false')
 
-    // /*  todo reverse */
+    // todo reverse
     return (
         <React.Fragment>
             <S.Header>
@@ -21,22 +22,31 @@ const Generator = props => {
             <S.Container>
                 <S.Top className={active}>
 
+                    <Controls />
+
                     { active === 'skewed' && <S.SkewBg></S.SkewBg> }
                     { active === 'wave' && <S.Wave></S.Wave> }
                 </S.Top>
-                <S.Center>
-                    TODO Show Code
-                </S.Center>
                 <S.Bottom>
                     <S.Row>
-                        <Card onClick={() => { setActive('skewed') }}><img src="/skewed.png" alt="skewed" /></Card>
-                        <Card onClick={() => { setActive('semiCircle') }}><img src="/semicircle.png" alt="semi circle" /></Card>
-                        <Card onClick={() => { setActive('wave') }}><img src="/wave.png" alt="wave" /></Card>
-                    </S.Row>
-                    <S.Row>
-                        <Card onClick={() => { setActive('spikes') }}><img src="/spikes.png" alt="spikes" /></Card>
-                        <Card onClick={() => { setActive('triangle') }}><img src="/triangle.png" alt="triangle" /></Card>
-                        <Card onClick={() => { setActive('curved') }}><img src="/curved.png" alt="curved" /></Card>
+                        <Card onClick={() => { setActive('skewed') }}>
+                            <img src="/skewed.png" alt="skewed" />
+                        </Card>
+                        <Card onClick={() => { setActive('semiCircle') }}>
+                            <img src="/semicircle.png" alt="semi circle" />
+                        </Card>
+                        <Card onClick={() => { setActive('wave') }}>
+                            <img src="/wave.png" alt="wave" />
+                        </Card>
+                        <Card onClick={() => { setActive('spikes') }}>
+                            <img src="/spikes.png" alt="spikes" />
+                        </Card>
+                        <Card onClick={() => { setActive('triangle') }}>
+                            <img src="/triangle.png" alt="triangle" />
+                        </Card>
+                        <Card onClick={() => { setActive('curved') }}>
+                            <img src="/curved.png" alt="curved" />
+                        </Card>
                     </S.Row>
                 </S.Bottom>
             </S.Container>
