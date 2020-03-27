@@ -7,9 +7,9 @@ const Home = () => (
     <Head>
       <title>Separator Generator</title>
       <link rel="icon" href="/favicon.ico" />
-      <style>
-        {'body { margin: 0; font-family: sans-serif }'}
-      </style>
+      <style>{`
+        body { margin: 0; font-family: sans-serif; }
+      `}</style>
     </Head>
 
     <Generator />

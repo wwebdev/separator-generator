@@ -1,10 +1,35 @@
 import styled from 'styled-components'
 import { darkGrey } from '../../ui/constants'
+import { Card } from '@material-ui/core'
 
 export const Container = styled.main`
   height: 100vh;
   display: flex;
   flex-direction: column;
+`
+
+export const Header = styled.header`
+  position: absolute;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  box-sizing: border-box;
+
+  a {
+    color: #fff;
+  }
+
+  img {
+    height: 50px;
+    margin-left: 3px;
+  }
+
+  svg {
+    font-size: 32px;
+  }
 `
 
 const Section = styled.section`
@@ -75,6 +100,10 @@ export const Top = styled(Section)`
     bottom: -50px;
     background: #fff;
   }
+
+  &.skewed {
+    background: transparent;
+  }
 `
 
 export const SkewBg = styled.div`
@@ -88,7 +117,7 @@ export const SkewBg = styled.div`
   background: ${darkGrey};
   transform: skewY(6deg);
   transform-origin: top right;
-  z-index: -1;
+  z-index: 0;
 `
 
 export const Wave = styled.div`
@@ -123,4 +152,25 @@ export const Wave = styled.div`
 
 export const Bottom = styled(Section)`
   color: ${darkGrey};
+  display: flex;
+  align-items: flex-end;
+`
+
+export const Center = styled.div`
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+`
+
+export const Row = styled.div`
+  display: flex;
+
+  > * {
+    margin: 20px;
+  }
+
+  img {
+    width: 100%;
+  }
 `
