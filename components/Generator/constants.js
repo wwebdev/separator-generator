@@ -71,11 +71,6 @@ export const SEPARATOR_OPTIONS = {
             min: 0,
             max: 100,
         },
-        top: {
-            value: 50,
-            min: 0,
-            max: 50,
-        },
     },
     [SEPARATORS.CURVED]: {
         reversed: false,

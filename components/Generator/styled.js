@@ -1,7 +1,12 @@
-import styled from 'styled-components'
-import { Card, FormControlLabel as MuiFormControlLabel } from '@material-ui/core'
-import { darkGrey } from '../../ui/constants'
+import styled, { css } from 'styled-components'
 import _get from 'lodash/get'
+import {
+  Card,
+  TextareaAutosize,
+  FormControlLabel as MuiFormControlLabel
+} from '@material-ui/core'
+import { darkGrey } from '../../ui/constants'
+import { generateSkewCss } from './codeGenerators'
 
 export const Container = styled.main`
   height: 100vh;
@@ -44,44 +49,50 @@ export const Top = styled(Section)`
   color: #fff;
   background: ${darkGrey};
 
-  &.curved {
-    border-bottom-left-radius: 50% ${props => _get(props, 'options.curve.value')}%;
-    border-bottom-right-radius: 50% ${props => _get(props, 'options.curve.value')}%;
-
-    &.reverse {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-
-      &::after {
-        content: '';
-        border-top-left-radius: 50% ${props => 100 - _get(props, 'options.curve.value') || 0}%; /* TODO fix */
-        border-top-right-radius: 50% ${props => 100 - _get(props, 'options.curve.value') || 0}%;
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        background: #fff;
-        height: 50px;
-      }
-    }
+  &.skewed {
+    background: transparent;
   }
+`
 
-  &.spikes {
+export const Curved = styled(Top)`
+  border-bottom-left-radius: 50% ${props => _get(props, 'options.curve.value')}%;
+  border-bottom-right-radius: 50% ${props => _get(props, 'options.curve.value')}%;
+
+  &.reverse {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+
     &::after {
       content: '';
+      border-top-left-radius: 50% ${props => 100 - _get(props, 'options.curve.value') || 0}%; /* TODO fix */
+      border-top-right-radius: 50% ${props => 100 - _get(props, 'options.curve.value') || 0}%;
       position: absolute;
-      right: 0;
-      left: 0;
-      top: 100%;
-      z-index: 10;
-      display: block;
-      height: ${props => _get(props, 'options.size.value')}px;
-      background-size: ${props => _get(props, 'options.size.value')}px 100%;
-      background-image: linear-gradient(135deg, ${darkGrey} 25%, transparent 25%), linear-gradient(225deg, ${darkGrey} 25%, transparent 25%);
-      background-position: ${props => _get(props, 'options.left.value')}%;
+      bottom: 0;
+      width: 100%;
+      background: #fff;
+      height: 50px;
     }
   }
+`
 
-  &.triangle::before {
+export const Spikes = styled(Top)`
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 100%;
+    z-index: 10;
+    display: block;
+    height: ${props => _get(props, 'options.size.value')}px;
+    background-size: ${props => _get(props, 'options.size.value')}px 100%;
+    background-image: linear-gradient(135deg, ${darkGrey} 25%, transparent 25%), linear-gradient(225deg, ${darkGrey} 25%, transparent 25%);
+    background-position: ${props => _get(props, 'options.left.value')}%;
+  }
+`
+
+export const Triangle = styled(Top)`
+  &::before {
     content: '';
     position: absolute;
     bottom: 0;
@@ -92,15 +103,17 @@ export const Top = styled(Section)`
     height: ${props => _get(props, 'options.size.value')}px;
     transform:
       translateX(-50%)
-      translateY(${props => _get(props, 'options.top.value')}%)
+      translateY(50%)
       rotate(45deg);
   }
 
-  &.triangle.reverse::before {
+  &.reverse::before {
     background: #fff;
   }
+`
 
-  &.semiCircle::before {
+export const SemiCircle = styled(Top)`
+  &::before {
     position: absolute;
     content: '';
     left: ${props => _get(props, 'options.left.value')}%;
@@ -113,32 +126,16 @@ export const Top = styled(Section)`
     bottom: 0px;
   }
 
-  &.semiCircle.reverse::before {
+  &.reverse::before {
     background: #fff;
-  }
-
-  &.skewed {
-    background: transparent;
+    transform:
+      translateX(-50%)
+      translateY(${props => (_get(props, 'options.top.value') || 0) * -1 + 100}%);
   }
 `
 
 export const SkewBg = styled.div`
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: ${darkGrey};
-  transform: ${props => `skewY(${props.angle}deg)`};
-  transform-origin: top right;
-  z-index: 0;
-
-  &.reverse {
-    transform: ${props => `skewY(-${props.angle}deg)`};
-    transform-origin: top left;
-  }
+  ${props => generateSkewCss(props.options)}
 `
 
 export const Wave = styled.div`
@@ -217,18 +214,35 @@ export const Row = styled.div`
 
 export const Controls = styled(Card)`
   position: relative;
-  background-color: #fff;
+  background-color: rgba(255,255,255,0.7) !important;
   z-index: 20;
 
-  @media (max-height: 768px) { /* TODO figure out height */
+  @media (max-height: 900px) {
     position: absolute;
-    background-color: rgba(255,255,255,0.7) !important;
     top: 100px;
   }
 `
 
 export const ControlContent = styled.div`
   padding: 10px;
+  display: ${props => props.isVisible ? 'block' : 'none'};
+`
+
+export const ControlToggle = styled.div`
+  @media (min-height: 899px) {
+    display: none;
+  }
+
+  padding: 10px;
+  border-top: 1px solid rgba(0,0,0,0.23);
+  cursor: pointer;
+
+  > span {
+    color: rgba(0, 0, 0, 0.54);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `
 
 export const FormControlLabel = styled(MuiFormControlLabel)`
@@ -240,4 +254,23 @@ export const SliderContainer = styled.div`
     text-transform: capitalize;
     color: ${darkGrey};
   }
+`
+export const CodeArea = styled(TextareaAutosize)`
+    width: 100%;
+    margin-bottom: ${props => props.marginBottom ? '20px' : '0'};
+`
+
+export const Copied = styled.span`
+    display: inline-block;
+    padding: 4px;
+    margin-right: 5px;
+    background: rgba(0,0,0,0.8);
+    color: rgba(255,255,255,0.6);
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.3s;
+
+    ${props => props.visible && css`
+        opacity: 1;
+    `}
 `

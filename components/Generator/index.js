@@ -7,7 +7,7 @@ import * as S from './styled'
 import { SEPARATORS, SEPARATOR_OPTIONS } from './constants'
 
 const Generator = props => {
-    const defaultSeparator = SEPARATORS.WAVE
+    const defaultSeparator = SEPARATORS.SKEWED
     const [active, setActive] = useState(defaultSeparator)
     const [options, setOptions] = useState(SEPARATOR_OPTIONS[defaultSeparator])
 
@@ -17,6 +17,16 @@ const Generator = props => {
     }
 
     const reversedClass = options.reversed ? 'reverse' : ''
+    // TODO improve
+    const TopElement = active === SEPARATORS.SEMI_CIRCLE
+        ? S.SemiCircle
+        : active === SEPARATORS.SPIKES
+            ? S.Spikes
+            : active === SEPARATORS.TRIANGLE
+                ? S.Triangle
+                : active === SEPARATORS.CURVED
+                    ? S.Curved
+                    : S.Top
 
     return (
         <React.Fragment>
@@ -31,17 +41,15 @@ const Generator = props => {
                 </a>
             </S.Header>
             <S.Container>
-                <S.Top className={cn(active, reversedClass)} options={options}>
+                <TopElement className={cn(active, reversedClass)} options={options}>
                     <Controls
                         options={options}
                         setOptions={setOptions}
+                        active={active}
                     />
 
                     { active === SEPARATORS.SKEWED &&
-                        <S.SkewBg
-                            className={reversedClass}
-                            angle={options.angle.value}>
-                        </S.SkewBg>
+                        <S.SkewBg options={options}></S.SkewBg>
                     }
                     { active === SEPARATORS.WAVE &&
                         <S.Wave
@@ -49,7 +57,7 @@ const Generator = props => {
                             curve={options.curve.value}>
                         </S.Wave>
                     }
-                </S.Top>
+                </TopElement>
                 <S.Bottom>
                     <S.Row>
                         { Object.entries(SEPARATORS).map(([key, val]) =>
