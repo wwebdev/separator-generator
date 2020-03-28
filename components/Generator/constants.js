@@ -41,12 +41,23 @@ export const SEPARATOR_OPTIONS = {
     },
     [SEPARATORS.WAVE]: {
         reversed: false,
-        curve: 10, // ??
+        curve: {
+            value: 70,
+            min: 0,
+            max: 150,
+        },
     },
     [SEPARATORS.SPIKES]: {
-        height: 20,
-        width: 20,
-        left: 0,
+        size: {
+            value: 50,
+            min: 10,
+            max: 400,
+        },
+        left: {
+            value: 0,
+            min: 0,
+            max: 100,
+        },
     },
     [SEPARATORS.TRIANGLE]: {
         reversed: false,

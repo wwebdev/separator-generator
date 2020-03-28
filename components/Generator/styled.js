@@ -74,10 +74,10 @@ export const Top = styled(Section)`
       top: 100%;
       z-index: 10;
       display: block;
-      height: 90px;
-      background-size: 50px 100%;
+      height: ${props => _get(props, 'options.size.value')}px;
+      background-size: ${props => _get(props, 'options.size.value')}px 100%;
       background-image: linear-gradient(135deg, ${darkGrey} 25%, transparent 25%), linear-gradient(225deg, ${darkGrey} 25%, transparent 25%);
-      background-position: 50%;
+      background-position: ${props => _get(props, 'options.left.value')}%;
     }
   }
 
@@ -143,7 +143,7 @@ export const SkewBg = styled.div`
 
 export const Wave = styled.div`
   position: absolute;
-  height: 70px;
+  height: ${props => props.curve}px;
   width: 100%;
   background: ${darkGrey};
   bottom: 0;
@@ -157,17 +157,17 @@ export const Wave = styled.div`
 
   &::before {
     width: 53.5%;
-    height: 80px;
+    height: 110%;
     background-color: #fff;
     right: 0;
-    top: 40px;
+    top: 60%;
   }
   &::after {
     width: 53.5%;
-    height: 70px;
+    height: 100%;
     background-color: ${darkGrey};
-    left: -1px;
-    top: 27px;
+    left: 0;
+    top: 40%;
   }
 
   &.reverse::before,
@@ -176,14 +176,14 @@ export const Wave = styled.div`
   }
 
   &.reverse::before {
-    height: 70px;
-    top: 27px;
+    height: 100%;
+    top: 40%;
     background-color: ${darkGrey};
   }
 
   &.reverse::after {
-    height: 80px;
-    top: 40px;
+    height: 110%;
+    top: 60%;
     background-color: #fff;
   }
 `

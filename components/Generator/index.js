@@ -7,7 +7,7 @@ import * as S from './styled'
 import { SEPARATORS, SEPARATOR_OPTIONS } from './constants'
 
 const Generator = props => {
-    const defaultSeparator = SEPARATORS.CURVED
+    const defaultSeparator = SEPARATORS.WAVE
     const [active, setActive] = useState(defaultSeparator)
     const [options, setOptions] = useState(SEPARATOR_OPTIONS[defaultSeparator])
 
@@ -44,7 +44,10 @@ const Generator = props => {
                         </S.SkewBg>
                     }
                     { active === SEPARATORS.WAVE &&
-                        <S.Wave className={reversedClass}></S.Wave>
+                        <S.Wave
+                            className={reversedClass}
+                            curve={options.curve.value}>
+                        </S.Wave>
                     }
                 </S.Top>
                 <S.Bottom>
