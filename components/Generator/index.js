@@ -52,10 +52,7 @@ const Generator = props => {
                         <S.SkewBg options={options}></S.SkewBg>
                     }
                     { active === SEPARATORS.WAVE &&
-                        <S.Wave
-                            className={reversedClass}
-                            curve={options.curve.value}>
-                        </S.Wave>
+                        <S.Wave options={options}></S.Wave>
                     }
                 </TopElement>
                 <S.Bottom>

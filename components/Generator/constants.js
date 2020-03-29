@@ -44,7 +44,7 @@ export const SEPARATOR_OPTIONS = {
         curve: {
             value: 70,
             min: 0,
-            max: 150,
+            max: 250,
         },
     },
     [SEPARATORS.SPIKES]: {
