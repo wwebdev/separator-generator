@@ -58,7 +58,11 @@ const Generator = props => {
                 <S.Bottom>
                     <S.Row>
                         { Object.entries(SEPARATORS).map(([key, val]) =>
-                            <Card key={`${val}-card`} onClick={() => { useSeparator(val) }}>
+                            <Card
+                                className={active === val ? 'active' : ''}
+                                key={`${val}-card`}
+                                onClick={() => { useSeparator(val) }}
+                            >
                                 <img src={`/${val}.png`} alt={`${val} preview`} />
                             </Card>
                         )}

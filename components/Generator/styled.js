@@ -101,9 +101,10 @@ export const Row = styled.div`
       margin: 5px;
     }
 
+    &.active,
     &:hover {
       cursor: pointer;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     }
   }
 
@@ -158,6 +159,17 @@ export const SliderContainer = styled.div`
 export const CodeArea = styled(TextareaAutosize)`
     width: 100%;
     margin-bottom: ${props => props.marginBottom ? '20px' : '0'};
+`
+
+export const CopyContainer = styled.div`
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+
+  svg {
+    color: ${darkGrey};
+    margin-right: 4px;
+  }
 `
 
 export const Copied = styled.span`

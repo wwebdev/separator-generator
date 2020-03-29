@@ -82,7 +82,10 @@ const Controls = props => {
                 }
                 { value === 1 &&
                     <div>
-                        <FileCopy onClick={() => copyToClipboard(htmlTextArea, 'html')} />
+                        <S.CopyContainer onClick={() => copyToClipboard(htmlTextArea, 'html')} >
+                            <FileCopy />
+                            Copy
+                        </S.CopyContainer>
                         <S.Copied visible={copiedCode === 'html'}>copied</S.Copied>
                         <S.CodeArea
                             value={htmlCode}
@@ -94,7 +97,10 @@ const Controls = props => {
                 }
                 { value === 2 &&
                     <div>
-                        <FileCopy onClick={() => copyToClipboard(cssTextArea, 'css')} />
+                        <S.CopyContainer onClick={() => copyToClipboard(cssTextArea, 'css')} >
+                            <FileCopy />
+                            Copy
+                        </S.CopyContainer>
                         <S.Copied visible={copiedCode === 'css'}>copied</S.Copied>
                         <S.CodeArea
                             value={cssCode}
