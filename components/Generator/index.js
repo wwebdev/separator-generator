@@ -17,7 +17,6 @@ const Generator = props => {
     }
 
     const reversedClass = options.reversed ? 'reverse' : ''
-    // TODO improve
     const TopElement = active === SEPARATORS.SEMI_CIRCLE
         ? S.SemiCircle
         : active === SEPARATORS.SPIKES

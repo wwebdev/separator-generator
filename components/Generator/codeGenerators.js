@@ -12,7 +12,6 @@ export const generateHtmlCode = active => active === SEPARATORS.SKEWED
 : `<section class="${active}"></section>`
 
 export const generateCssCode = ({ active, options }) => {
-  // TODO check what to generate
   return active === SEPARATORS.SKEWED ? `.${active} {
   ${generateSkewCss(options)}
 }` : active === SEPARATORS.SEMI_CIRCLE ? generateSemiCircleCss({ ...options, cssClass: active})
