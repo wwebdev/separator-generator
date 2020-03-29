@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components'
-import _get from 'lodash/get'
 import {
   Card,
   TextareaAutosize,
@@ -54,11 +53,7 @@ const Section = styled.section`
 
 export const Top = styled(Section)`
   color: #fff;
-  background: ${darkGrey};
-
-  &.skewed {
-    background: transparent;
-  }
+  background: ${props => props.noBgColor ? 'transparent' : darkGrey};
 `
 
 export const SkewBg = styled.div`

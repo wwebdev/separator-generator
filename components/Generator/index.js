@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import cn from 'classnames'
 import { Card } from '@material-ui/core'
 import { GitHub } from '@material-ui/icons'
 import Controls from './Controls'
@@ -40,7 +39,7 @@ const Generator = props => {
                 </a>
             </S.Header>
             <S.Container>
-                <TopElement className={cn(active, reversedClass)} options={options}>
+                <TopElement options={options} noBgColor={active === SEPARATORS.SKEWED}>
                     <Controls
                         options={options}
                         setOptions={setOptions}
