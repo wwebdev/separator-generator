@@ -34,7 +34,7 @@ const Generator = props => {
                         <img src="https://res.cloudinary.com/wwebdev/image/upload/v1585149959/logo-text_rhuhcl.png" alt="Logo of wweb.dev"/>
                     </a>
                 </div>
-                <a href='https://github.com/Vincenius/separator-generator' target="_blank" rel="noopener noreferrer">
+                <a href='https://github.com/wwebdev/separator-generator' target="_blank" rel="noopener noreferrer">
                     <GitHub />
                 </a>
             </S.Header>
