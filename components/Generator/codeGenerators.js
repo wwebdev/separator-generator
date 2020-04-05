@@ -130,12 +130,22 @@ ${cssClass ? `.${cssClass}` : '&'}::before {
   content: '';
   position: absolute;
   bottom: 0;
-  z-index: 10;
-  background: ${reversed ? '#fff' : 'inherit' };
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: ${reversed
+    ? `0 ${size.value}px ${size.value}px ${size.value}px;`
+    : `${size.value}px ${size.value}px 0 ${size.value}px;`
+  }
+  border-color: ${reversed
+    ? 'transparent transparent #fff transparent;'
+    : `${darkGrey} transparent transparent transparent;`
+  }
   left: ${left.value}%;
-  width: ${size.value}px;
-  height: ${size.value}px;
-  transform: translateX(-50%) translateY(50%) rotate(45deg);
+  transform: ${reversed
+    ? 'translateX(-50%)'
+    : 'translateX(-50%) translateY(100%)'
+  };
 }`
 
 export const generateCurvedCss = ({ cssClass, reversed, curve }) =>
