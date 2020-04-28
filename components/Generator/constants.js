@@ -58,6 +58,7 @@ export const SEPARATOR_OPTIONS = {
             value: 0,
             min: 0,
             max: 100,
+            step: 5,
         },
     },
     [SEPARATORS.TRIANGLE]: {
