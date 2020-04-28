@@ -1,6 +1,6 @@
 # separator-generator
 
-This is a A collection of pure css section separators with the possiblity to customize and copy the code.
+This is a collection of pure css section separators with the possibility to customize and copy the code.
 
 [Live Demo](https://wweb.dev/resources/css-separator-generator)
 

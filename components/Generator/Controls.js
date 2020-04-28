@@ -76,6 +76,7 @@ const Controls = props => {
                                     min={option.min}
                                     max={option.max}
                                     step={option.step}
+                                    valueLabelDisplay="auto"
                                 />
                             </S.SliderContainer>
                         )}
