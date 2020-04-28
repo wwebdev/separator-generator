@@ -52,6 +52,7 @@ export const SEPARATOR_OPTIONS = {
             value: 50,
             min: 10,
             max: 400,
+            step: 5,
         },
         left: {
             value: 0,
