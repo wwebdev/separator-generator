@@ -113,14 +113,14 @@ ${cssClass ? `.${cssClass}` : '&'}::after {
   content: '';
   position: absolute;
   right: 0;
-  left: 0;
+  left: -${left.value}%;
   top: 100%;
   z-index: 10;
   display: block;
   height: ${size.value}px;
   background-size: ${size.value}px 100%;
   background-image: linear-gradient(135deg, ${darkGrey} 25%, transparent 25%), linear-gradient(225deg, ${darkGrey} 25%, transparent 25%);
-  background-position: ${left.value}% 0;
+  background-position: 0 0;
 }`
 
 export const generateTriangleCss = ({ reversed, size, left, cssClass }) =>
